@@ -1,24 +1,32 @@
 <div class="card bg-light">
   <div class="card-body">
     <h5 class="card-title text-center">Agregar cita</h5>
+    <div *ngIf="formularioIncorrecto === true" class="text-center">
+      <span class="badge text-bg-danger">TODOS LOS CAMPOS SON ABLIGATORIOS</span>
+    </div>
     <div class="form-group mb-3">
       <label for="nombre">Nombre</label>
-      <input type="text" id="nombre" class="form-control" placeholder="Ingrese su nombre">
+      <input type="text" id="nombre" class="form-control" [(ngModel)]="name" placeholder="Ingrese su nombre">
     </div>
     <div class="form-group mb-3">
       <label for="fecha">Fecha</label>
-      <input type="text" placeholder="fecha" class="form-control" bsDatepicker [bsConfig]="{ isAnimated: true }">
+      <div class="row">
+        <div class="col-xs-12 col-12 col-md-4 form-group mb-3">
+          <input type="text" placeholder="dd/mm/aaaa" class="form-control" bsDatepicker [(ngModel)]="fecha"
+            [bsConfig]="{ isAnimated: true }">
+        </div>
+      </div>
+      <div class="form-group mb-3">
+        <label>Hora</label>
+        <timepicker [(ngModel)]="hora">Hora</timepicker>
+      </div>
+      <div class="form-group mb-3">
+        <label for="sintomas">Sintomas</label>
+        <textarea id="sintomas" rows="3" class="form-control" [(ngModel)]="sintomas"
+          placeholder="Ingrese los sintomas"></textarea>
+      </div>
+      <button type="button" class="btn btn-primary" (click)="agregarCita()">
+        Agregar cita
+      </button>
     </div>
-    <div class="form-group mb-3">
-      <label>Hora</label>
-      <timepicker [(ngModel)]="mytime">Hora</timepicker>
-    </div>
-    <div class="form-group mb-3">
-      <label for="sintomas">Sintomas</label>
-      <textarea id="sintomas" rows="3" class="form-control" placeholder="Ingrese los sintomas"></textarea>
-    </div>
-    <button type="button" class="btn btn-primary">
-      Agregar cita
-    </button>
   </div>
-</div>
